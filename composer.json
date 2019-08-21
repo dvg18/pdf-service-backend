@@ -1,0 +1,30 @@
+{
+  "name": "www/pdf-service-backend",
+  "type": "project",
+  "source": {
+    "reference": "master",
+    "type": "git",
+    "url": "ssh://git@git.oft-e.com:2222/vehicle-project/pdf-service-backend.git"
+  },
+  "require": {
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "ext-zip": "*",
+    "ext-apache": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Entity\\": [
+      ],
+      "Controller\\": "engine/core/includes/classes/"
+    },
+    "classmap": [
+      "engine/core/includes/classes/",
+      "engine/core/includes/lib/"
+    ],
+    "files": [
+    ]
+  },
+  "homepage": "http://oft-e.com",
+  "version": "1.0"
+}

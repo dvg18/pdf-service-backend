@@ -1,0 +1,44 @@
+#!/usr/bin/sudo /usr/bin/php
+<?php
+
+@mkdir('/var/log/httpd/vehicle-project', 0777, TRUE);
+@mkdir('/srv/www/pdf-service-backend/tmp/uploaded/pdf', 0777, TRUE);
+chdir('/srv/www/pdf-service-backend/');
+
+$pathToUploaded = _readline('Enter path to tmp/uploaded folder: ');
+exec('ln -s ' . $pathToUploaded . ' uploaded');
+
+exec('sudo mkdir -m 777  /var/log/pdf.backend/');
+exec('sudo chown www-data:www-data /var/log/pdf.backend/');
+
+if (!file_exists('/srv/www/pdf-service-backend/engine/core/includes/config_locale.inc.php')) {
+    file_put_contents('/srv/www/pdf-service-backend/engine/core/includes/config_locale.inc.php', '');
+    chmod('/srv/www/pdf-service-backend/engine/core/includes/config_locale.inc.php', 0666);
+}
+
+
+function _readline($prompt)
+{
+    $pathToPics = '';
+    while (empty($pathToPics)) {
+        $pathToPics = readline($prompt);
+        if (!file_exists($pathToPics)) {
+            echo "\n" . $pathToPics . " is invalid, please enter again! \n";
+            $pathToPics = '';
+        }
+    }
+    return $pathToPics;
+}
+
+require_once '/srv/www/pdf-service-backend/engine/core/includes/config_common.inc.php';
+
+$file = '/srv/www/pdf-service-backend/tools/install_scripts/db.sql';
+
+$mysql = sprintf('/usr/bin/mysql -u%s -p%s -h%s', CFG_MYSQL_USER,
+    CFG_MYSQL_PASS, CFG_MYSQL_HOST
+);
+
+$cmd = $mysql . '< ' . $file . ' 2>&1';
+exec($cmd);
+
+//require_once '/srv/www/pdf-service-backend/tools/install_scripts/upload_daemon.php';
