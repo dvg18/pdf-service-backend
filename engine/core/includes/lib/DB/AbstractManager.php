@@ -8,16 +8,23 @@ use Storage\CommonInterface;
 
 /**
  * Class for working with MySql storage
- * @package Queue
+ * @package DB
  */
 class AbstractManager implements CommonInterface
 {
+    /** @var string */
     private $tableName;
 
+    /** @var array */
     private $ptfMapping;
 
+    /** @var string */
     private $entityName;
 
+    /**
+     * AbstractManager constructor.
+     * @param $entityName
+     */
     public function __construct($entityName)
     {
         $factoryClass = 'DB\_' . $entityName;

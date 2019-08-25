@@ -30,6 +30,10 @@ class FileItem extends BaseClass //implements Item
 
 }
 
+/**
+ * Class FileItemManager
+ * @package DB
+ */
 class FileItemManager extends AbstractManager
 {
 

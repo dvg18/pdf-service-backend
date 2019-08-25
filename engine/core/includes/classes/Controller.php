@@ -2,17 +2,18 @@
 /**
  * Controller of pdf.backend API
  *
- * @todo Need to use links like http://pdf.usedcarsni.com/api/processQueue/:id + GET, because they looks more user
+ * @todo Need to use links like http://pdf-service-backend/file/{id} + GET, because they looks more user
  * friendly.
  *
  * Actions:
- * - putImage, put user's pdf to tmp dir, example of usage:
- *   http://pdf.usedcarsni.com/api?action=putImage + POST
- * - processQueue
- *   http://pdf.usedcarsni.com/api?action=processQueue + GET     Get one
- *   http://pdf.usedcarsni.com/api?action=processQueue + POST    Create
- *   http://pdf.usedcarsni.com/api?action=processQueue + PUT     Update
- *   http://pdf.usedcarsni.com/api?action=processQueue + DELETE  Delete
+ *   http://pdf-service-backend/?action=file&id={id} + GET     Get file
+ *   http://pdf-service-backend/?action=file&id={id} + DELETE  Delete file
+ *
+ *   http://pdf-service-backend/?action=html&id={id} + GET     Get html code of file
+ *   http://pdf-service-backend/?action=html&html={code} + POST    Create file with {code} content
+ *
+ *   http://pdf-service-backend/?action=pdf&id={id} + GET     Get pdf file from html file with {id}
+ *
  */
 class Controller
 {
