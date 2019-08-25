@@ -16,8 +16,7 @@ class Checker
     public static function exec()
     {
         if (empty($_SERVER['HTTP_ORIGIN'])) {
-            //return TRUE;
-            $_SERVER['HTTP_ORIGIN'] = $_SERVER['HTTP_REAL_HOST'];//preg_replace('{^(http://[^/]+)/.*$}', '\1',
+            $_SERVER['HTTP_ORIGIN'] = $_SERVER['HTTP_HOST'];//preg_replace('{^(http://[^/]+)/.*$}', '\1',
             // $_SERVER['HTTP_REFERER']);
         }
 
@@ -36,6 +35,7 @@ class Checker
                 'www.dealerconnect.co.uk',
                 'www.pdf.backend',
                 'pdf.backend',
+                'pdf-service-backend'
             )
         );
     }

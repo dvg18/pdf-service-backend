@@ -49,7 +49,7 @@ if (Http\Origin\Checker::exec()) {
      */
 } else {
     error_log('Incorrect origin: ' . $_SERVER['HTTP_ORIGIN'] . ' => ' . $_SERVER['HTTP_REFERER']);
-    die('Service temporarily unavailable.');
+    //die('Service temporarily unavailable.');
 }
 
 /* Set other settings */

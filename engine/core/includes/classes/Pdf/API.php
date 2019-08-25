@@ -4,7 +4,7 @@ namespace Pdf;
 
 use Converter\Pdf;
 use File;
-use FileItem;
+use DB\FileItem;
 
 /**
  * Class that makes PDF files and //can send headers to download them

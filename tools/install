@@ -1,9 +1,8 @@
 #!/usr/bin/sudo /usr/bin/php
 <?php
 
-@mkdir('/var/log/httpd/vehicle-project', 0777, TRUE);
-@mkdir('/srv/www/pdf-service-backend/tmp/uploaded/pdf', 0777, TRUE);
-chdir('/srv/www/pdf-service-backend/');
+@mkdir('tmp/uploaded/pdf', 0777, TRUE);
+/*chdir('/srv/www/pdf-service-backend/');
 
 $pathToUploaded = _readline('Enter path to tmp/uploaded folder: ');
 exec('ln -s ' . $pathToUploaded . ' uploaded');
@@ -39,6 +38,4 @@ $mysql = sprintf('/usr/bin/mysql -u%s -p%s -h%s', CFG_MYSQL_USER,
 );
 
 $cmd = $mysql . '< ' . $file . ' 2>&1';
-exec($cmd);
-
-//require_once '/srv/www/pdf-service-backend/tools/install_scripts/upload_daemon.php';
+exec($cmd);*/

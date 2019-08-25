@@ -1,6 +1,7 @@
 <?php
 
-use DB\Wrapper;
+use DB\FileItemManager;
+use DB\FileItem;
 
 class File
 {
@@ -42,7 +43,7 @@ class File
         $fileItem->Path = $path;
         $fileItem->Type = $type;
         $fileItem->State = 0;
-        $DP = new Wrapper(get_class($fileItem));
+        $DP = new FileItemManager(get_class($fileItem));
         return $DP->create($fileItem);
     }
 
@@ -79,7 +80,7 @@ class File
      */
     public static function getFile($id)
     {
-        $DP = new Wrapper('FileItem');
+        $DP = new FileItemManager('FileItem');
         return $DP->getById($id);
     }
 
@@ -128,7 +129,7 @@ class File
         if (empty($file)) {
             return FALSE;
         }
-        $DP = new DataProvider();
+        $DP = new FileItemManager('FileItem');
         $DP->remove($file->Id);
         if (!self::fileExist($file)) {
             return FALSE;

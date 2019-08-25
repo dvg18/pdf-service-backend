@@ -52,7 +52,7 @@ class wkhtmltopdf
     private function genInputFile($html)
     {
         // wkhtmltopdf DOES NOT WORK WITHOUT HTML file extension !!!!!
-        $tmp_html_file = tempnam('/tmp', time()) . '.html';
+        $tmp_html_file = tempnam('tmp', time()) . '.html';
         $ret = file_put_contents($tmp_html_file, str_replace('src="https', 'src="http', $html), LOCK_EX);
         @chmod($tmp_html_file, 0666);
         return $tmp_html_file;

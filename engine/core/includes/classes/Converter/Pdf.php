@@ -6,7 +6,6 @@ use wkhtmltopdf;
 
 class Pdf
 {
-
     /**
      *
      * @param string $source
@@ -14,7 +13,6 @@ class Pdf
      */
     public static function convert($source)
     {
-        //include_once CFG_PATH_COMMON_ENGINE . CFG_PATH_LIB . 'wkhtmltopdf/' . 'wkhtmltopdf.class.php';
         $wk = new wkhtmltopdf();
         $wk->setHtmlContent($source);
         $tmpFileName = tempnam(CFG_FOLDER_UPLOADED_TMP, 'pdf');
@@ -26,7 +24,6 @@ class Pdf
         if (file_exists($tmpFileName)) {
             unlink($tmpFileName);
         }
-
         return $pdf;
     }
 

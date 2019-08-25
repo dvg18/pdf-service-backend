@@ -4,10 +4,13 @@ namespace DB;
 
 use BaseClass;
 use Exception;
-use FileItem;
 use Storage\CommonInterface;
 
-class Wrapper implements CommonInterface
+/**
+ * Class for working with MySql storage
+ * @package Queue
+ */
+class AbstractManager implements CommonInterface
 {
     private $tableName;
 
@@ -17,7 +20,7 @@ class Wrapper implements CommonInterface
 
     public function __construct($entityName)
     {
-        $factoryClass = '_' . $entityName;
+        $factoryClass = 'DB\_' . $entityName;
         $this->tableName = $factoryClass::getTableName();
         $this->ptfMapping = $factoryClass::getPropertyToFieldMapping();
         $this->entityName = $entityName;
@@ -65,7 +68,8 @@ class Wrapper implements CommonInterface
      */
     private function _extractItemFromDB($item)
     {
-        $entityItem = new $this->entityName;
+        $className = 'DB\\' . $this->entityName;
+        $entityItem = new $className;
         foreach ($this->ptfMapping as $propertyName => $propertyValue) {
             $entityItem->$propertyName = $item->$propertyValue;
         }
@@ -117,7 +121,7 @@ class Wrapper implements CommonInterface
         return API::execute(
             'UPDATE ' . $this->tableName
             . 'SET ' . $values .
-            'WHERE id=' . $entity->Id
+            ' WHERE id=' . $entity->Id
         );
     }
 
@@ -126,6 +130,6 @@ class Wrapper implements CommonInterface
      */
     public function remove($entityId)
     {
-        return API::execute('DELETE FROM `file_item` WHERE id = :id', array(':id' => $entityId));
+        return API::execute('DELETE FROM ' . $this->tableName . ' WHERE id = :id', array(':id' => $entityId));
     }
 }

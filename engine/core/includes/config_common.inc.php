@@ -3,6 +3,6 @@
 
 @define('CFG_MYSQL_HOST', 'localhost');
 @define('CFG_MYSQL_USER', 'root');
-@define('CFG_MYSQL_PASS', 'passwd');
+@define('CFG_MYSQL_PASS', '');
 @define('CFG_MYSQL_DATABASE', 'files');
-@define('CFG_MYSQL_COMMON_DATABASE', 'uc_common');
+@define('CFG_MYSQL_COMMON_DATABASE', 'files');

@@ -1,6 +1,8 @@
 <?php
 
-$DP = new \DataProvider();
+use DB\FileItemManager;
+
+$DP = new FileItemManager('FileItem');
 $fileItems = $DP->getAll();
 foreach ($fileItems as $file) {
     if (File::fileExist($file)) {

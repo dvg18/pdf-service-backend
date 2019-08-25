@@ -1,16 +1,16 @@
 {
-  "name": "www/pdf-service-backend",
+  "name": "pdf-service-backend",
   "type": "project",
   "source": {
     "reference": "master",
     "type": "git",
-    "url": "ssh://git@git.oft-e.com:2222/vehicle-project/pdf-service-backend.git"
+    "url": "https://github.com/dvg18/pdf-service-backend"
   },
   "require": {
     "ext-json": "*",
     "ext-pdo": "*",
     "ext-zip": "*",
-    "ext-apache": "*"
+    "phpunit/phpunit": "*"
   },
   "autoload": {
     "psr-4": {

@@ -1,5 +1,19 @@
 <?php
-
+/**
+ * Controller of pdf.backend API
+ *
+ * @todo Need to use links like http://pdf.usedcarsni.com/api/processQueue/:id + GET, because they looks more user
+ * friendly.
+ *
+ * Actions:
+ * - putImage, put user's pdf to tmp dir, example of usage:
+ *   http://pdf.usedcarsni.com/api?action=putImage + POST
+ * - processQueue
+ *   http://pdf.usedcarsni.com/api?action=processQueue + GET     Get one
+ *   http://pdf.usedcarsni.com/api?action=processQueue + POST    Create
+ *   http://pdf.usedcarsni.com/api?action=processQueue + PUT     Update
+ *   http://pdf.usedcarsni.com/api?action=processQueue + DELETE  Delete
+ */
 class Controller
 {
     /**
@@ -76,7 +90,6 @@ class Controller
         self::_sendCORSHeaders();
         header('Access-Control-Allow-Methods: ' . strtoupper(implode($arguments[1])));
         $className = 'Action' . ucfirst($name);
-        //require_once $className . '.php';
         $method = strtolower($arguments[0]);
         return $className::$method();
     }

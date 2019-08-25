@@ -2,22 +2,24 @@
 
 namespace Test\wkhtmltopdf;
 
-$_SERVER['HTTP_HOST'] = $_SERVER['HTTP_REQUESTED_ENGINE'] = 'ucni.backend';
-require_once dirname(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__))))))) . '/config.inc.php';
-require_once CFG_PATH_COMMON_ENGINE . CFG_PATH_LIB_WKHTMLTOPDF . 'wkhtmltopdf.class.php';
+use PHPUnit\Framework\TestCase;
 
-class wkhtmltopdfTest extends \PHPUnit_Framework_TestCase
+$_SERVER['HTTP_HOST'] = $_SERVER['HTTP_REQUESTED_ENGINE'] = 'ucni.backend';
+require_once '../../../config.inc.php';
+require_once CFG_PATH_COMMON_ENGINE . CFG_PATH_LIB . 'wkhtmltopdf/' . 'wkhtmltopdf.class.php';
+
+class wkhtmltopdfTest extends TestCase
 {
 
     private static $html;
     private static $outputFile;
     private static $testPdfFile;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
-        self::$html = file_get_contents(CFG_PATH_COMMON_ENGINE . CFG_PATH_LIB_WKHTMLTOPDF . '_Test/test_content.html');
-        self::$testPdfFile = CFG_PATH_COMMON_ENGINE . CFG_PATH_LIB_WKHTMLTOPDF . '_Test/test_wkhtmltopdf.pdf';
-        self::$outputFile = CFG_PATH_TMP . 'test_wkhtmltopdf.pdf';
+        self::$html = file_get_contents(CFG_PATH_COMMON_ENGINE . CFG_PATH_LIB. 'wkhtmltopdf/' . '_Test/test_content.html');
+        self::$testPdfFile = CFG_PATH_COMMON_ENGINE . CFG_PATH_LIB . 'wkhtmltopdf/' . '_Test/test_wkhtmltopdf.pdf';
+        self::$outputFile = 'tmp/test_wkhtmltopdf.pdf';
     }
 
     public function testExec()
@@ -39,7 +41,7 @@ class wkhtmltopdfTest extends \PHPUnit_Framework_TestCase
             filesize(self::$testPdfFile));
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass() :void
     {
         unlink(self::$outputFile);
     }

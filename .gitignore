@@ -1,9 +1,9 @@
 .*
 config_locale.inc.php
-/public_html/default/pics
-/public_html/default/tmp
-/public_html/default/pics/*
-/public_html/default/tmp/uploaded/*
+/public_html/pics
+/public_html/pics/*
+/public_html/tmp
+/public_html/tmp/*
 /tmp
 /tmp/*
 vendor/

@@ -1,5 +1,7 @@
 <?php
 
+use DB\FileItem;
+
 class ActionHtml extends AbstractFileAction implements Actionable
 {
     /**
